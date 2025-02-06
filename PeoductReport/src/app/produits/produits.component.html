@@ -1,0 +1,94 @@
+<!-- Header Section with Logo and Company Name -->
+<header class="header">
+  <div class="logo">
+    <img src="assets/lunar.png" alt="Logo de la société">
+  </div>
+  <div class="company-name">
+    <h1>Product List</h1>
+  </div>
+  <nav class="navbar">
+    <a href="/analytic" class="nav-link">
+      <i class="fas fa-plus-circle"></i> Analytics
+    </a>
+  </nav>
+</header>
+
+<!-- Search Section -->
+<div class="container mt-4">
+  <div class="row">
+    <!-- Barre de recherche à gauche -->
+    <div class="col-md-8">
+      <div class="input-group search-box">
+        <input
+          type="text"
+          class="form-control form-control-lg"
+          placeholder="Search by name"
+          [(ngModel)]="searchTerm"
+          (input)="search()"
+        />
+        <span class="input-group-text bg-info text-white">
+          <i class="fa fa-search"></i>
+        </span>
+      </div>
+    </div>
+    
+
+    <!-- Bouton Ajouter un produit à droite -->
+    <div class="col-md-4 text-end">
+      <button class="btn btn-success add-btn" [routerLink]="'/create'" *ngIf="!isAddingProduct">
+        <i class="fa fa-plus"></i> Add product
+      </button>
+    </div>
+  </div>
+
+  <!-- Tableau des produits -->
+  <div class="table-container">
+    <table *ngIf="!isAddingProduct && produits.length > 0" class="table table-bordered table-striped table-hover">
+      <thead class="bg-primary text-white">
+        <tr>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Description</th>
+          <th>Quantity in stock</th>
+          <th>Category</th>
+          <th>Expiration date</th>
+          <th>Picture</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let produit of produits">
+          <td>{{ produit.nom }}</td>
+          <td>{{ produit.prix | number:'1.2-2' }} DT</td>
+          <td>{{ produit.description }}</td>
+          <td>{{ produit.quantiteStock }}</td>
+          <td>{{ produit.categorie }}</td>
+          <td>{{ produit.dateExpiration | date }}</td>
+          <td>
+            <img *ngIf="produit.imageUrl" [src]="produit.imageUrl" alt="Product image" class="product-image"/>
+          </td>
+          <td class="action-buttons">
+            <button class="btn btn-warning me-2" [routerLink]="['/edit', produit.id]">
+              <i class="fa fa-edit"></i> Edit
+            </button>
+            <button class="btn btn-danger" (click)="deleteProduit(produit.id)">
+              <i class="fa fa-trash"></i> Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Export Button -->
+    <div class="export-container">
+      <button (click)="exportToExcel()" class="btn btn-success export-btn">
+        <i class="fas fa-file-export"></i> Export List
+      </button>
+    </div>
+  </div>
+
+  <!-- Message si aucun produit -->
+  <div *ngIf="produits.length === 0" class="alert alert-info text-center">
+    Aucun produit trouvé.
+  </div>
+</div>

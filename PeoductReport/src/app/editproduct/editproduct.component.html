@@ -1,0 +1,67 @@
+<div class="form-container">
+  <h2><i class="fas fa-edit"></i> Modifier le Produit</h2>
+
+  <!-- Affichage d'un message d'erreur -->
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    <strong>Erreur :</strong> {{ errorMessage }}
+  </div>
+
+  <form [formGroup]="produitForm" (ngSubmit)="updateProduit()">
+    <!-- Nom du produit -->
+    <div class="form-group">
+      <label for="nom"><i class="fas fa-tag"></i> Nom du produit</label>
+      <input type="text" id="nom" formControlName="nom" placeholder="Entrez le nom" class="form-control" />
+      <div *ngIf="produitForm.get('nom')?.invalid && produitForm.get('nom')?.touched" class="invalid-feedback">
+        Le nom est requis et doit contenir entre 3 et 100 caractères.
+      </div>
+    </div>
+
+    <!-- Prix du produit -->
+    <div class="form-group">
+      <label for="prix"><i class="fas fa-dollar-sign"></i> Prix</label>
+      <input type="number" id="prix" formControlName="prix" placeholder="Entrez le prix" class="form-control" />
+      <div *ngIf="produitForm.get('prix')?.invalid && produitForm.get('prix')?.touched" class="invalid-feedback">
+        Le prix est requis et doit être supérieur à 0.
+      </div>
+    </div>
+
+    <!-- Description -->
+    <div class="form-group">
+      <label for="description"><i class="fas fa-align-left"></i> Description</label>
+      <textarea id="description" formControlName="description" placeholder="Ajoutez une description" class="form-control"></textarea>
+      <div *ngIf="produitForm.get('description')?.invalid && produitForm.get('description')?.touched" class="invalid-feedback">
+        La description est obligatoire.
+      </div>
+    </div>
+
+    <!-- Quantité en stock -->
+    <div class="form-group">
+      <label for="quantiteStock"><i class="fas fa-cogs"></i> Quantité en stock</label>
+      <input type="number" id="quantiteStock" formControlName="quantiteStock" placeholder="Quantité en stock" class="form-control" />
+    </div>
+
+    <!-- Catégorie -->
+    <div class="form-group">
+      <label for="categorie"><i class="fas fa-tags"></i> Catégorie</label>
+      <input type="text" id="categorie" formControlName="categorie" placeholder="Catégorie" class="form-control" />
+    </div>
+
+    <!-- URL de l'image -->
+    <div class="form-group">
+      <label for="imageUrl"><i class="fas fa-image"></i> URL de l'image</label>
+      <input type="text" id="imageUrl" formControlName="imageUrl" placeholder="URL de l'image" class="form-control" />
+    </div>
+
+    <!-- Date d'expiration -->
+    <div class="form-group">
+      <label for="dateExpiration"><i class="fas fa-calendar"></i> Date d'expiration</label>
+      <input type="date" id="dateExpiration" formControlName="dateExpiration" class="form-control" />
+    </div>
+
+    <!-- Boutons -->
+    <div class="button-container">
+      <button type="submit" [disabled]="produitForm.invalid" class="btn btn-primary"><i class="fas fa-save"></i> Enregistrer</button>
+      <a class="btn btn-secondary" (click)="cancel()"><i class="fas fa-times"></i> Annuler</a>
+    </div>
+  </form>
+</div>
