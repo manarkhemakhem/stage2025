@@ -62,10 +62,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "PeoductReport:build:production"
+              "buildTarget": "PeoductReport:build:production"
             },
             "development": {
-              "browserTarget": "PeoductReport:build:development"
+              "buildTarget": "PeoductReport:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -73,7 +73,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "PeoductReport:build"
+            "buildTarget": "PeoductReport:build"
           }
         },
         "test": {
