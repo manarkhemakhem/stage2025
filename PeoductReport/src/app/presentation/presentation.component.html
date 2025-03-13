@@ -1,0 +1,94 @@
+<div class="container mt-5">
+  <h2>Liste des Présentations</h2>
+
+  <div class="row presentation-list">
+    <div class="col-md-3" *ngFor="let presentation of presentations">
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">{{ presentation.title }}</h5>
+          <button class="btn btn-primary" (click)="selectPresentation(presentation)">Sélectionner</button>
+          <button class="btn btn-danger mt-2" (click)="deletePresentation(presentation)">Supprimer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button class="btn btn-success mt-3" (click)="addPresentation()">Ajouter une présentation</button>
+
+  <div *ngIf="selectedPresentation" class="mt-5">
+    <h3>Détails de la présentation : {{ selectedPresentation.title }}</h3>
+    <button class="btn btn-warning mb-3" (click)="addSlide()">Ajouter une diapositive</button>
+
+    <div class="row slide-list">
+      <div *ngFor="let slide of selectedPresentation.slides" class="col-md-4 mb-3">
+        <div class="card" [class.selected]="selectedSlide === slide" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">{{ slide.title }}</h5>
+            <button class="btn btn-warning btn-sm" (click)="updateSlide(slide, 'Nouveau titre')">Modifier</button>
+            <button class="btn btn-danger btn-sm" (click)="deleteSlide(slide)">Supprimer</button>
+
+            <!-- Affichage des blocs dans la diapositive -->
+            <div *ngFor="let block of slide.blocks" class="block-card">
+              <div class="block-title">{{ block.title }}</div>
+              <div *ngIf="block.type === 'text'">{{ block.content }}</div>
+              <div *ngIf="block.type === 'image'">
+                <img [src]="block.imageUrl" alt="{{ block.title }}" class="img-fluid" />
+              </div>
+              <div *ngIf="block.type === 'chart'">
+                <div class="chart">{{ block.chartType }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-4">
+      <h4>Ajouter un Bloc</h4>
+      <div class="form-group">
+        <label for="blockTitle">Titre du Bloc :</label>
+        <input type="text" id="blockTitle" [(ngModel)]="newBlockTitle" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="blockType">Type du Bloc :</label>
+        <select id="blockType" [(ngModel)]="newBlockType" class="form-control" (change)="onBlockTypeChange()">
+          <option value="text">Texte</option>
+          <option value="image">Image</option>
+          <option value="chart">Graphique</option>
+        </select>
+      </div>
+
+      <!-- Champ texte pour le type 'text' -->
+      <div *ngIf="newBlockType === 'text'" class="form-group">
+        <label for="blockContent">Contenu du texte :</label>
+        <textarea id="blockContent" [(ngModel)]="newBlockContent" class="form-control" rows="3"></textarea>
+      </div>
+
+      <!-- Champ image pour le type 'image' -->
+      <div *ngIf="newBlockType === 'image'" class="form-group">
+        <label for="blockImageUrl">URL de l'image :</label>
+        <input type="text" id="blockImageUrl" [(ngModel)]="newBlockImageUrl" class="form-control">
+      </div>
+
+      <!-- Sélection des produits pour le type 'chart' -->
+      <div *ngIf="newBlockType === 'chart'" class="form-group">
+        <label for="chartType">Type de Graphique :</label>
+        <select id="chartType" [(ngModel)]="newChartType" class="form-control">
+          <option value="bar">Barres</option>
+          <option value="pie">Secteurs</option>
+          <option value="line">Ligne</option>
+        </select>
+      </div>
+
+      <div *ngIf="newBlockType === 'chart'" class="form-group">
+        <label for="productSelection">Sélectionner les produits :</label>
+        <select id="productSelection" [(ngModel)]="selectedProducts" multiple class="form-control">
+          <option *ngFor="let produit of produits" [value]="produit.id">{{ produit.nom }}</option>
+        </select>
+      </div>
+
+      <button class="btn btn-info mt-2" (click)="addCustomBlock()" [disabled]="isAddingBlock">Ajouter Bloc</button>
+    </div>
+  </div>
+</div>

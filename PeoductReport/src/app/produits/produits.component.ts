@@ -13,6 +13,14 @@ export class ProduitsComponent implements OnInit {
   searchTerm: string = '';
   isAddingProduct: boolean = false;  // Variable pour afficher ou masquer le formulaire
   produit: Produit = { id: '', nom: '', prix: 0, description: '', quantiteStock: 0,  categorie: '', imageUrl: '', dateExpiration: '' };  // Initialisation des nouveaux champs
+  currentPage: number = 1;  // Page actuelle pour la pagination
+
+
+ // Variables pour le tri
+ sortColumn: string = '';
+ sortDirection: boolean = true; // true = ascendant, false = descendant
+
+
 
   constructor(private produitService: ProduitService) {}
 
@@ -31,6 +39,31 @@ export class ProduitsComponent implements OnInit {
       }
     );
   }
+
+// 🔹 Fonction pour trier par colonne
+sortTable(column: string) {
+  if (this.sortColumn === column) {
+    this.sortDirection = !this.sortDirection; // Inverse l'ordre si on clique encore
+  } else {
+    this.sortColumn = column;
+    this.sortDirection = true;
+  }
+
+  this.produits.sort((a, b) => {
+    let valueA = a[column as keyof Produit];
+    let valueB = b[column as keyof Produit];
+
+    // Si on trie par date d'expiration, convertir en timestamps
+    if (column === 'dateExpiration') {
+      valueA = new Date(valueA as string).getTime();
+      valueB = new Date(valueB as string).getTime();
+    }
+
+    return this.sortDirection ? (valueA > valueB ? 1 : -1) : (valueA < valueB ? 1 : -1);
+  });
+}
+
+
 
   // Afficher le formulaire d'ajout
   addProduit(): void {

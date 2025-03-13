@@ -1,0 +1,157 @@
+/* Conteneur principal */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px;
+  background-color: #f4f7fc;
+  border-radius: 10px;
+}
+
+/* Liste des présentations disposées horizontalement */
+.presentation-list {
+  display: flex;
+  flex-wrap: wrap; /* Permet aux cartes de passer à la ligne suivante */
+  gap: 20px; /* Espacement entre les cartes */
+}
+
+/* Styles des cartes de présentation */
+.card {
+  border: none;
+  border-radius: 15px;
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2);
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  text-align: center;
+  color: #2c3e50;
+  text-transform: capitalize;
+}
+
+/* Styles des diapositives disposées horizontalement */
+.slide-list {
+  display: flex;
+  flex-wrap: wrap; /* Permet aux diapositives de passer à la ligne suivante */
+  gap: 20px;
+}
+
+/* Styles des blocs disposés horizontalement */
+.block {
+  border: 1px solid #3498db;
+  padding: 15px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  transition: all 0.3s ease;
+  width: 18rem; /* Taille fixe pour chaque bloc */
+}
+
+.block:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.block-content {
+  font-size: 14px;
+  color: #34495e;
+  margin: 0;
+}
+
+/* Espacement entre les boutons et les blocs */
+button.mt-2 {
+  margin-top: 15px;
+}
+
+/* Boutons */
+button {
+  margin: 10px 5px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+  background-color: #2980b9;
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* Espacement des blocs sous les diapositives */
+button.mt-3 {
+  margin-top: 20px;
+}
+
+button.mt-5 {
+  margin-top: 30px;
+}
+
+.slide {
+  position: relative; /* Assurez-vous que les blocs sont positionnés par rapport à cette diapositive */
+  width: 800px; /* Largeur fixe ou dynamique pour votre diapositive */
+  height: 600px; /* Hauteur fixe ou dynamique pour votre diapositive */
+  border: 1px solid #ccc; /* Bordure pour mieux voir les limites de la diapositive */
+  margin: 20px;
+}
+
+.block {
+  position: absolute; /* Les blocs seront positionnés relativement à la diapositive */
+  border: 1px solid #000; /* Bordure pour mieux voir les blocs */
+  background-color: rgba(0, 0, 255, 0.1); /* Couleur de fond pour les blocs */
+  padding: 5px;
+}
+/* Agrandir la taille des diapositives */
+.slide-list .card {
+  width: 25rem; /* Vous pouvez augmenter la valeur pour agrandir la diapositive */
+  height: 20rem; /* Ajustez la hauteur en fonction de vos besoins */
+}
+
+/* Si vous voulez modifier la taille en fonction de la taille de la fenêtre (responsive) */
+@media (min-width: 768px) {
+  .slide-list .card {
+    width: 30rem;  /* Agrandir davantage pour les grands écrans */
+  }
+}
+
+@media (max-width: 767px) {
+  .slide-list .card {
+    width: 100%; /* Diapositives qui prennent toute la largeur sur les petits écrans */
+  }
+}
+/* Agrandir la diapositive sélectionnée */
+.card.selected {
+  width: 30rem !important; /* Augmente la largeur de la diapositive sélectionnée */
+  height: 25rem !important; /* Augmente la hauteur de la diapositive sélectionnée */
+  transition: all 0.3s ease; /* Transition douce lors du changement de taille */
+}
+/* Appliquer un effet de zoom au survol */
+.card:hover {
+  transform: scale(1.2); /* Augmente la taille de la diapositive */
+  transition: transform 0.3s ease; /* Animation douce */
+}

@@ -1,3 +1,28 @@
-<div class="container">
-  <router-outlet></router-outlet>
+<!-- Header Section -->
+<header class="header">
+  <div class="header-left">
+    <i class="fa fa-bars-staggered menu-icon" (click)="toggleSidebar()"></i> <!-- L'icône du menu déplacée avant le logo -->
+    <h1>Gestion des Produits</h1>
+  </div>
+</header>
+
+<!-- Body Wrapper (Sidebar + Content) -->
+<div class="body-wrapper">
+  <!-- Sidebar Section -->
+  <aside class="sidebar" [ngClass]="{'sidebar-open': isSidebarOpen}">
+    <nav class="sidebar-nav">
+      <ul class="menu-list">
+        <li><a [routerLink]="'/analytic'" class="menu-item"><i class="fa fa-tachometer-alt"></i> Dashboard</a></li>
+        <li><a [routerLink]="'/produits'" class="menu-item"><i class="fa fa-box"></i> Produits</a></li>
+        <li><a [routerLink]="'/presentation'" class="menu-item"><i class="fa fa-box"></i> presentation</a></li>
+
+
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- Main Content (router outlet) -->
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
 </div>

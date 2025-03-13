@@ -10,7 +10,13 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { CreateproductComponent } from './createproduct/createproduct.component';
 import { EditproductComponent } from './editproduct/editproduct.component';
+import { NgxApexchartsModule } from 'ngx-apexcharts';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { NgxEchartsModule } from 'ngx-echarts';
 @NgModule({ declarations: [
         AppComponent,
         ProduitsComponent,
@@ -22,5 +28,14 @@ import { EditproductComponent } from './editproduct/editproduct.component';
         FormsModule,
         CommonModule,
         RouterModule,
-        ReactiveFormsModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
+        ReactiveFormsModule,
+        NgxApexchartsModule,
+        MatButtonModule,
+        MatIconModule,
+        NgxPaginationModule,
+        NgxEchartsModule
+
+      ],
+
+        providers: [provideHttpClient(withInterceptorsFromDi()), provideAnimationsAsync()] })
 export class AppModule { }

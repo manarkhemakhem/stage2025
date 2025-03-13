@@ -1,0 +1,279 @@
+.cards-container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.card-total {
+  width: 250px;
+  border-radius: 10px;
+  color: #fff;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card-total.produits {
+  background: linear-gradient(135deg, #e3adc3, #ff758c);
+}
+
+.card-total.categories {
+  background: linear-gradient(135deg, #088f20, #1e88e5);
+}
+
+.card-header {
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.card-icon {
+  font-size: 24px;
+}
+
+.card-body {
+  margin-top: 10px;
+}
+
+.card-number {
+  font-size: 28px;
+  font-weight: bold;
+}
+.chart-container {
+  display: flex;
+  gap: 20px; /* Espace entre les graphiques */
+  justify-content: space-between;
+  margin-top: 20px;
+  flex-wrap: wrap; /* Permet de gérer les petits écrans en ajustant l'affichage */
+}
+
+.chart-card {
+  width: 48%; /* Donne à chaque graphique une largeur presque égale */
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  text-align: center;
+}
+
+.chart-icon {
+  font-size: 22px;
+  color: #555;
+  margin-right: 8px;
+}
+
+.card-header {
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 8px 8px 0 0;
+}
+
+.card-body {
+  padding: 15px;
+}
+/* Personnalisation de la table pour un design moderne */
+/* Style de la carte contenant la table */
+.card-table {
+  margin-top: 20px;
+  border-radius: 10px; /* Coins arrondis pour la carte */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Ombre douce pour la carte */
+}
+
+/* Style de l'entête de la carte */
+.card-table .card-header {
+  background-color: #b5cdb6; /* Couleur d'entête */
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 15px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+/* Icône de l'entête */
+.card-table .card-icon {
+  margin-right: 10px;
+}
+
+/* Style du corps de la carte */
+.card-table .card-body {
+  padding: 15px;
+}
+
+/* Personnalisation de la table à l'intérieur de la carte */
+/* Style de la carte contenant la table */
+.card-table {
+  margin-top: 20px;
+  border-radius: 10px; /* Coins arrondis pour la carte */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Ombre douce pour la carte */
+}
+
+/* Style de l'entête de la carte avec fond noir et texte neutre */
+.card-table .card-header {
+  background-color: #ffffff;  /* Fond noir */
+  color: #0f0f0f;  /* Texte neutre clair (gris pâle ou blanc) */
+  font-size: 18px;
+  font-weight: bold;
+  padding: 15px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+/* Icône de l'entête */
+.card-table .card-icon {
+  margin-right: 10px;
+  color: #0f0f0f; /* Couleur de l'icône en blanc ou gris clair */
+}
+
+/* Style du corps de la carte */
+.card-table .card-body {
+  padding: 15px;
+}
+
+/* Personnalisation de la table à l'intérieur de la carte */
+.p-table {
+  border-radius: 10px;
+  box-shadow: none;
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+.p-table th {
+  background-color: #333;  /* Fond noir pour l'entête de la table */
+  color: #f5f5f5;  /* Texte neutre clair (gris pâle ou blanc) */
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  padding: 12px;
+}
+
+.p-table td {
+  text-align: center;
+  font-size: 14px;
+  padding: 12px;
+}
+
+/* Coins arrondis pour les cellules */
+.p-table th, .p-table td {
+  border-radius: 5px;
+}
+
+.p-table .p-datatable-tbody tr:hover {
+  background-color: #f1f1f1;  /* Couleur de survol */
+}
+
+/* Personnalisation des lignes et bordures */
+.p-table .p-datatable-tbody tr {
+  border-bottom: 1px solid #ddd; /* Bordure de ligne */
+}
+
+.p-table .p-datatable-tbody tr:first-child {
+  border-top: 1px solid #ddd; /* Bordure supérieure de la première ligne */
+}
+/* analytics.component.css */
+
+/* Container pour les graphiques */
+.chart-container {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  margin-top: 20px;
+  flex-wrap: wrap;
+  transition: margin-left 0.3s ease;  /* Animation fluide quand la sidebar est ouverte */
+}
+
+/* Les cartes contenant les graphiques */
+.chart-card {
+  width: calc(50% - 10px);  /* Ajuste la largeur pour 2 cartes par ligne */
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  border: 1px solid #ddd;
+  margin-bottom: 20px;
+  transition: width 0.3s ease;  /* Transition pour la largeur lors du changement */
+}
+
+/* Lorsque la sidebar est ouverte, ajuster l'espace pour les graphiques */
+.sidebar-open .chart-container {
+  margin-left: 250px;  /* Ajoute une marge pour faire de la place à la sidebar */
+}
+
+@media (max-width: 768px) {
+  .chart-card {
+    width: 100%; /* Prend toute la largeur pour les petits écrans */
+  }
+}
+
+.chart-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.card {
+  flex: 1;
+  min-width: 300px;
+  margin: 10px;
+}
+
+.chart {
+  width: 100%;
+  height: 300px; /* Ajustez cette hauteur selon vos besoins */
+}
+/* Container principal pour les graphiques */
+.graph-container {
+  display: flex;
+  flex-wrap: wrap; /* Permet aux graphiques de se placer en ligne et de revenir à la ligne suivante si l'espace est insuffisant */
+  gap: 30px; /* Espace entre les graphiques */
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+/* Style des cartes contenant les graphiques */
+.chart-card {
+  width: 100%;
+  max-width: 600px; /* Limite la largeur des graphiques */
+  height: 400px; /* Hauteur de chaque graphique */
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  margin-bottom: 20px; /* Espace entre les cartes */
+}
+
+/* Réduction de la taille des graphiques sur les petits écrans */
+@media screen and (max-width: 768px) {
+  .chart-card {
+    width: 100%; /* Occupation de 100% de la largeur sur les petits écrans */
+    height: 300px; /* Réduction de la hauteur sur les petits écrans */
+  }
+}
+
+/* Styles optionnels pour le titre des cartes */
+.chart-card-title {
+  text-align: center;
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+/* Donut Chart (Graphique en anneau) */
+.chart-card .echarts-container {
+  width: 100%;
+  height: 100%;
+}
+
+.echarts-container {
+  margin: 10px 0;
+}

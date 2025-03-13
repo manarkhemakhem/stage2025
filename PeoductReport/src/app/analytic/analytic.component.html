@@ -1,0 +1,55 @@
+<div>
+  <!-- Filtrage des produits par catégorie -->
+  <div class="filter-container">
+    <div class="filter-wrapper">
+      <i class="fa fa-filter filter-icon"></i>
+      <select id="categoryFilter" [(ngModel)]="selectedCategory" (change)="filterByCategory()" class="filter-select">
+        <option value="">Toutes les catégories</option>
+        <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Cards pour afficher les statistiques -->
+  <div class="cards-container">
+    <div class="card card-total produits">
+      <div class="card-header">
+        <i class="fa fa-box card-icon"></i> Total Produits
+      </div>
+      <div class="card-body">
+        <span class="card-number">{{ totalProduits }}</span>
+      </div>
+    </div>
+
+    <div class="card card-total categories">
+      <div class="card-header">
+        <i class="fa fa-th-large card-icon"></i> Total Catégories
+      </div>
+      <div class="card-body">
+        <span class="card-number">{{ totalCategories }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="chart-container">
+    <div class="graph-container">
+      <!-- Graphique en barres verticales empilées -->
+      <div class="chart-card">
+        <div class="chart-card-title">Quantité des Produits</div>
+        <div #barChart class="echarts-container"></div>
+      </div>
+
+      <!-- Graphique en anneau (Donut) -->
+      <div class="chart-card">
+        <div class="chart-card-title">Répartition des Prix des Produits</div>
+        <div #lineChart class="echarts-container"></div>
+      </div>
+
+      <!-- Graphique horizontal empilé -->
+      <div class="chart-card">
+        <div class="chart-card-title">Jours Restants Avant l'Expiration</div>
+        <div #expirationChart class="echarts-container"></div>
+      </div>
+    </div>
+  </div>
+</div>

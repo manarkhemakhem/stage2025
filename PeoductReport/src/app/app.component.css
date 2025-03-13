@@ -1,0 +1,132 @@
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f7fc;
+  min-height: 100vh;
+  margin-top: 60px; /* Pour laisser de la place sous le header */
+}
+
+/* Header */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #7485e7;
+  color: white;
+  z-index: 10;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.header-left .menu-icon {
+  font-size: 1.8rem;
+  cursor: pointer;
+  margin-right: 15px;
+}
+
+.header-left .logo {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.header-left h1 {
+  font-size: 1.5rem;
+}
+
+/* Body Wrapper: Sidebar + Content */
+.body-wrapper {
+  display: flex;
+  position: relative; /* Permet au contenu de s'ajuster avec la sidebar */
+  margin-top: 60px; /* Le header prend de la place en haut, on décale le corps en dessous */
+  height: calc(100vh - 60px); /* La hauteur du body ajustée pour ne pas dépasser sous le header */
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 60px; /* Laisser de la place pour le header */
+  left: -250px; /* Initialement cachée */
+  width: 250px;
+  height: calc(100vh - 60px); /* S'adapte à la hauteur du body */
+  background-color: #7485e7;
+  transition: 0.3s;
+  padding-top: 20px;
+  z-index: 9;
+}
+
+.sidebar-open {
+  left: 0; /* Lorsque la sidebar est ouverte, elle est déplacée à gauche */
+}
+
+.sidebar-nav {
+  list-style: none;
+  padding: 0;
+}
+
+.menu-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.menu-item i {
+  margin-right: 10px;
+}
+
+.menu-item:hover {
+  background-color: #34495e;
+}
+
+.menu-item:active {
+  background-color: #1abc9c;
+}
+
+/* Main Content */
+.content {
+  margin-left: 0;
+  padding: 20px;
+  flex: 1;
+  transition: margin-left 0.3s ease-in-out;
+  padding-top: 20px;
+  height: calc(100vh - 60px); /* Pour s'ajuster à la hauteur du body */
+}
+
+.sidebar-open + .content {
+  margin-left: 250px; /* Lorsque la sidebar est ouverte, le contenu est déplacé */
+}
+/* Lorsque la sidebar est ouverte, ajuster l'espace disponible */
+.sidebar-open .chart-container {
+  margin-left: 250px;  /* Ajuster cette valeur selon la largeur de votre sidebar */
+  transition: margin-left 0.3s ease-in-out;  /* Animation fluide lors de l'ouverture */
+}
+
+/* Pour les petits écrans où la sidebar est cachée, les graphiques utilisent toute la largeur */
+@media (max-width: 768px) {
+  .sidebar-open .chart-container {
+    margin-left: 0;  /* Pas de marge pour les petits écrans */
+  }
+}
